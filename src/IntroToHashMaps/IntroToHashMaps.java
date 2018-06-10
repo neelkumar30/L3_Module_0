@@ -1,5 +1,7 @@
 package IntroToHashMaps;
 
+import java.util.HashMap;
+
 public class IntroToHashMaps {
 	//1. Create a HashMap called roots with Integers for the keys and Doubles for the values.
 	
@@ -13,4 +15,9 @@ public class IntroToHashMaps {
 	//   The square Root of 1 is 1.0
 	//   The square Root of 2 is 1.4142135623730951
 	//   The square Root of 3 is 1.7320508075688772
-}
+	public static void main(String[] args) {
+		HashMap <Integer, Double > roots = new HashMap <Integer, Double> ();
+	}
+} 
+
+
