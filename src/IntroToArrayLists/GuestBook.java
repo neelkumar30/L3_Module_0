@@ -64,9 +64,6 @@ public void actionPerformed(ActionEvent e) {
 			else {
 			n = n  +  names.get(i) + "\n";
 			}
-//			for (int j = 0; j< names.size(); j++) {
-//				n =  n + names.get( i- j );
-//			}
 		}
 		JOptionPane.showMessageDialog(null, n);
 	}

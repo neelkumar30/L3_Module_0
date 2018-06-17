@@ -17,6 +17,13 @@ public class IntroToHashMaps {
 	//   The square Root of 3 is 1.7320508075688772
 	public static void main(String[] args) {
 		HashMap <Integer, Double > roots = new HashMap <Integer, Double> ();
+		for (int i = 0; i < 500; i++) {
+			roots.put(i,Math.sqrt(i));
+		}
+		
+		for (Integer i : roots.keySet()) {
+			System.out.println(i + ": " + roots.get(i));
+		}
 	}
 } 
 
