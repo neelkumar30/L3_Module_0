@@ -15,6 +15,7 @@ public class LogSearch implements ActionListener {
 	JButton button1;
 	JButton button2;
 	JButton button3;
+	JButton button4;
 	HashMap<Integer, String> ID = new HashMap<Integer, String>();
 
 	/*
@@ -51,22 +52,29 @@ public class LogSearch implements ActionListener {
 		button1 = new JButton();
 		button2 = new JButton();
 		button3 = new JButton();
+		button4 = new JButton();
 		frame.add(panel);
 		panel.add(button1);
 		panel.add(button2);
 		panel.add(button3);
+		panel.add(button4);
 		frame.setVisible(true);
 		button1.setText("Add Name");
 		button2.setText("Search by ID");
 		button3.setText("View List");
+		button4.setText("Remove Entry");
 		button1.addActionListener(this);
 		button2.addActionListener(this);
 		button3.addActionListener(this);
+		button4.addActionListener(this);
 		frame.pack();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		String n = "";
+		String k;
+		int count = 0;
 		// TODO Auto-generated method stub
 		if (e.getSource() == button1) {
 			String user = JOptionPane.showInputDialog("What ID would you like to add?");
@@ -79,7 +87,7 @@ public class LogSearch implements ActionListener {
 			String search = JOptionPane.showInputDialog("What ID would you like to search?");
 			int s = Integer.parseInt(search);
 			if(ID.containsKey(s)) {
-				JOptionPane.showMessageDialog(null, "The name with the ID of " + s + " is" + ID.get(s));
+				JOptionPane.showMessageDialog(null, "The name with the ID of " + s + " is " + ID.get(s));
 			}
 			
 			else {
@@ -88,7 +96,22 @@ public class LogSearch implements ActionListener {
 		}
 		
 		if(e.getSource() == button3) {
+			for (Integer key : ID.keySet()) {
+				n = n + "ID: " + key + " Name: " + ID.get(key) + "\n";
+			}
+			JOptionPane.showMessageDialog(null, n);
+		}
+		
+		if(e.getSource() == button4) {
+			String user = JOptionPane.showInputDialog("What ID would you like to remove?");
+			int userID = Integer.parseInt(user);
+			if(ID.containsKey(userID)) {
+				ID.remove(userID);
+			}
 			
+			else {
+				JOptionPane.showMessageDialog(null, "No such ID exists");
+			}
 		}
 	}
 }
