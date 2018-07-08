@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.omg.Messaging.SyncScopeHelper;
+
 public class TextUndoRedo implements KeyListener {
 	JFrame frame;
 	JPanel panel;
@@ -41,6 +43,7 @@ public class TextUndoRedo implements KeyListener {
 		panel.add(label);
 		frame.setVisible(true);
 		frame.addKeyListener(this);
+		frame.setFocusTraversalKeysEnabled(false);
 		frame.pack();
 	}
 
@@ -61,8 +64,9 @@ public class TextUndoRedo implements KeyListener {
 		
 		if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
 			String User1 = label.getText();
-			char delete = User1.charAt(User1.length() -1);
+			char delete = User1.charAt(User1.length() -2);
 			Remove.push(delete);
+//			System.out.println(delete);
 			User1 = User1.substring(0, User1.length() -2);
 			label.setText(User1);
 		}
@@ -70,8 +74,11 @@ public class TextUndoRedo implements KeyListener {
 		if(e.getKeyCode() == KeyEvent.VK_TAB) {
 			 char undo = Remove.pop();
 			 String old = label.getText();
+			 old = old.substring(0, old.length()-1);
 			 label.setText(old + undo);
 			 frame.pack();
+			 System.out.println(undo);	
+			 System.out.println(old + " a");
 		}
 	}
 
